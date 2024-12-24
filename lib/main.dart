@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_for_baity/core/service_locator.dart';
 import 'package:task_for_baity/features/realEstateListing/data/models/category/category.dart';
@@ -14,11 +13,7 @@ import 'package:task_for_baity/features/realEstateListing/view_model/fetchAndFil
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
-  runApp(DevicePreview(
-      enabled: true,
-      builder: (context) {
-        return const TaskForBaity();
-      }));
+  runApp(const TaskForBaity());
 }
 
 Future<void> setupServiceLocator() async {
@@ -53,8 +48,6 @@ class TaskForBaity extends StatelessWidget {
           scaffoldBackgroundColor: const Color(0xfff5f5fa),
           textTheme: Theme.of(context).textTheme.apply(fontFamily: 'Tajawal'),
         ),
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
         home: const ListingFeature(),
       ),
     );
